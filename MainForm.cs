@@ -135,6 +135,11 @@ namespace YMapReplace
             DirSearch(pathToYmap);
 
             int fileCount = fileList.Count;
+            if (fileCount <= 0)
+            {
+                MessageBox.Show("This path is empty.");
+                return;
+            }
 
             progressBar1.Maximum = fileCount - 1;
             progressBar1.Minimum = 0;
