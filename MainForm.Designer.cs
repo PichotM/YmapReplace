@@ -91,7 +91,7 @@ namespace YMapReplace
             this.replaceButton.Name = "replaceButton";
             this.replaceButton.Size = new System.Drawing.Size(582, 34);
             this.replaceButton.TabIndex = 3;
-            this.replaceButton.Text = "Remplacer";
+            this.replaceButton.Text = "Start replacement";
             this.replaceButton.UseVisualStyleBackColor = true;
             this.replaceButton.Click += new System.EventHandler(this.replaceButton_Click);
             // 
@@ -101,7 +101,7 @@ namespace YMapReplace
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(108, 23);
             this.resetButton.TabIndex = 4;
-            this.resetButton.Text = "Réinitialiser";
+            this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
@@ -111,7 +111,7 @@ namespace YMapReplace
             this.pathYmapTextBox.Name = "pathYmapTextBox";
             this.pathYmapTextBox.Size = new System.Drawing.Size(579, 20);
             this.pathYmapTextBox.TabIndex = 5;
-            this.pathYmapTextBox.Text = "F://Users//Pichot//Desktop//TEST_EXPORT//prod";
+            this.pathYmapTextBox.Click += new System.EventHandler(this.pathYmapTextBox_OnClick);
             // 
             // label2
             // 
@@ -185,7 +185,7 @@ namespace YMapReplace
             this.deleteCheckbox.Name = "deleteCheckbox";
             this.deleteCheckbox.Size = new System.Drawing.Size(73, 17);
             this.deleteCheckbox.TabIndex = 15;
-            this.deleteCheckbox.Text = "Supprimer";
+            this.deleteCheckbox.Text = "Delete";
             this.deleteCheckbox.UseVisualStyleBackColor = true;
             // 
             // label5
@@ -228,7 +228,7 @@ namespace YMapReplace
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(111, 23);
             this.addButton.TabIndex = 20;
-            this.addButton.Text = "Ajouter";
+            this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
