@@ -63,7 +63,18 @@ namespace YMapReplace
             // 
             // numericZ
             // 
+            this.numericZ.DecimalPlaces = 4;
             this.numericZ.Location = new System.Drawing.Point(270, 139);
+            this.numericZ.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericZ.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericZ.Name = "numericZ";
             this.numericZ.Size = new System.Drawing.Size(108, 20);
             this.numericZ.TabIndex = 9;
@@ -125,14 +136,36 @@ namespace YMapReplace
             // 
             // numericX
             // 
+            this.numericX.DecimalPlaces = 4;
             this.numericX.Location = new System.Drawing.Point(15, 139);
+            this.numericX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericX.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericX.Name = "numericX";
             this.numericX.Size = new System.Drawing.Size(111, 20);
             this.numericX.TabIndex = 7;
             // 
             // numericY
             // 
+            this.numericY.DecimalPlaces = 4;
             this.numericY.Location = new System.Drawing.Point(143, 139);
+            this.numericY.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericY.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericY.Name = "numericY";
             this.numericY.Size = new System.Drawing.Size(111, 20);
             this.numericY.TabIndex = 8;
@@ -159,21 +192,54 @@ namespace YMapReplace
             // 
             // numericRotZ
             // 
+            this.numericRotZ.DecimalPlaces = 4;
             this.numericRotZ.Location = new System.Drawing.Point(270, 184);
+            this.numericRotZ.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericRotZ.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericRotZ.Name = "numericRotZ";
             this.numericRotZ.Size = new System.Drawing.Size(108, 20);
             this.numericRotZ.TabIndex = 13;
             // 
             // numericRotY
             // 
+            this.numericRotY.DecimalPlaces = 4;
             this.numericRotY.Location = new System.Drawing.Point(143, 184);
+            this.numericRotY.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericRotY.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericRotY.Name = "numericRotY";
             this.numericRotY.Size = new System.Drawing.Size(111, 20);
             this.numericRotY.TabIndex = 12;
             // 
             // numericRotX
             // 
+            this.numericRotX.DecimalPlaces = 4;
             this.numericRotX.Location = new System.Drawing.Point(15, 184);
+            this.numericRotX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericRotX.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.numericRotX.Name = "numericRotX";
             this.numericRotX.Size = new System.Drawing.Size(111, 20);
             this.numericRotX.TabIndex = 11;
@@ -183,7 +249,7 @@ namespace YMapReplace
             this.deleteCheckbox.AutoSize = true;
             this.deleteCheckbox.Location = new System.Drawing.Point(270, 234);
             this.deleteCheckbox.Name = "deleteCheckbox";
-            this.deleteCheckbox.Size = new System.Drawing.Size(73, 17);
+            this.deleteCheckbox.Size = new System.Drawing.Size(57, 17);
             this.deleteCheckbox.TabIndex = 15;
             this.deleteCheckbox.Text = "Delete";
             this.deleteCheckbox.UseVisualStyleBackColor = true;

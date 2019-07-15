@@ -200,8 +200,9 @@ namespace YMapReplace
                                 entity.SetPosition(entity.Position + new Vector3(0.0f + entityData.posX, 0.0f + entityData.posY, 0.0f + entityData.posZ));
 
                                 Quaternion angle = AngleToQuaternion((double)numericRotX.Value, (double)numericRotY.Value, (double)numericRotZ.Value);
-                                Quaternion newOrientation = Quaternion.Multiply(entity.Orientation, angle);
-                                entity.SetOrientation(newOrientation);
+                                Quaternion newRot = Quaternion.Multiply(entity.Orientation, angle);
+                                newRot.Normalize();
+                                entity.SetOrientation(Quaternion.Multiply(newRot, angle), true);
 
                                 listBoxLogs.Items.Add("Moved " + modelName + " from: " + ymap.Name + ".");
                                 if (!modificationsMade) modificationsMade = true;
