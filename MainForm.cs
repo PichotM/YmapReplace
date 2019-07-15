@@ -20,6 +20,7 @@ namespace YMapReplace
         private List<MetaHash> deleteList = new List<MetaHash>();
         private List<ReplaceEntity> replaceList = new List<ReplaceEntity>();
         private List<String> fileList = new List<string>();
+        private double degToRad = Math.PI / 180.0;
 
         public YMapReplacerForm()
         {
@@ -91,6 +92,11 @@ namespace YMapReplace
 
         private void DirSearch(string sDir)
         {
+            foreach (string f in Directory.GetFiles(sDir))
+            {
+                fileList.Add(f);
+            }
+
             try
             {
                 foreach (string d in Directory.GetDirectories(sDir))
@@ -119,7 +125,27 @@ namespace YMapReplace
 
             return hash;
         }
- 
+
+        public Quaternion AngleToQuaternion(double x, double y, double z)
+        {
+            x = (x * degToRad) / 2;
+            y = (y * degToRad) / 2;
+            z = (z * degToRad) / 2;
+
+            var c1 = Math.Cos(y);
+            var s1 = Math.Sin(y);
+            var c2 = Math.Cos(x);
+            var s2 = Math.Sin(x);
+            var c3 = Math.Cos(z);
+            var s3 = Math.Sin(z);
+
+            return new Quaternion(
+                (float)(s1 * c2 * s3 + c1 * s2 * c3),
+                (float)(s1 * c2 * c3 - c1 * s2 * s3),
+                (float)(c1 * c2 * s3 - s1 * s2 * c3),
+                (float)(c1 * c2 * c3 + s1 * s2 * s3));
+        }
+
         private void replaceButton_Click(object sender, EventArgs e)
         {
             if (listBoxFiles.Items.Count == 0) return;
@@ -173,7 +199,9 @@ namespace YMapReplace
                                 entity._CEntityDef.archetypeName = new MetaHash(newHash);
                                 entity.SetPosition(entity.Position + new Vector3(0.0f + entityData.posX, 0.0f + entityData.posY, 0.0f + entityData.posZ));
 
-                                // Quaternion are not supported yet (still need to port my js script and support Euler to make it easy)
+                                Quaternion angle = AngleToQuaternion((double)numericRotX.Value, (double)numericRotY.Value, (double)numericRotZ.Value);
+                                Quaternion newOrientation = Quaternion.Multiply(entity.Orientation, angle);
+                                entity.SetOrientation(newOrientation);
 
                                 listBoxLogs.Items.Add("Moved " + modelName + " from: " + ymap.Name + ".");
                                 if (!modificationsMade) modificationsMade = true;
