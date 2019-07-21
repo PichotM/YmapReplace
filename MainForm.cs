@@ -94,7 +94,8 @@ namespace YMapReplace
         {
             foreach (string f in Directory.GetFiles(sDir))
             {
-                fileList.Add(f);
+                if (Path.GetExtension(f) == ".ymap")
+                    fileList.Add(f);
             }
 
             try
@@ -103,7 +104,8 @@ namespace YMapReplace
                 {
                     foreach (string f in Directory.GetFiles(d))
                     {
-                        fileList.Add(f);
+                        if (Path.GetExtension(f) == ".ymap")
+                            fileList.Add(f);
                     }
                 }
             }
@@ -171,16 +173,15 @@ namespace YMapReplace
             }
 
             progressBar1.Maximum = fileCount - 1;
-            progressBar1.Minimum = 0;
+            progressBar1.Minimum = 1;
             progressBar1.Step = 1;
-            progressBar1.Value = 0;
+            progressBar1.Value = 1;
 
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
                 foreach (string filePath in fileList)
                 {
-                    Console.WriteLine(filePath);
                     bool modificationsMade = false;
 
                     YmapFile ymap = new YmapFile();
