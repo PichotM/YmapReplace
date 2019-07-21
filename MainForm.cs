@@ -150,7 +150,7 @@ namespace YMapReplace
 
         private void replaceButton_Click(object sender, EventArgs e)
         {
-            if (listBoxFiles.Items.Count == 0) return;
+            if (replaceList.Count == 0) return;
 
             if (listBoxPath.Items.Count == 0)
             {
@@ -204,12 +204,15 @@ namespace YMapReplace
                                 entity._CEntityDef.archetypeName = new MetaHash(newHash);
                                 entity.SetPosition(entity.Position + new Vector3(0.0f + entityData.posX, 0.0f + entityData.posY, 0.0f + entityData.posZ));
 
-                                Quaternion angle = AngleToQuaternion((double)numericRotX.Value, (double)numericRotY.Value, (double)numericRotZ.Value);
-                                Quaternion newRot = Quaternion.Multiply(entity.Orientation, angle);
-                                newRot.Normalize();
-                                entity.SetOrientation(Quaternion.Multiply(newRot, angle), true);
+                                if (entityData.rotX != 0.0 && entityData.rotY != 0.0 && entityData.rotZ != 0.0)
+                                {
+                                    Quaternion angle = AngleToQuaternion(entityData.rotX, entityData.rotY, entityData.rotZ);
+                                    Quaternion newRot = Quaternion.Multiply(entity.Orientation, angle);
+                                    newRot.Normalize();
+                                    entity.SetOrientation(Quaternion.Multiply(newRot, angle), true);
+                                }
 
-                                listBoxLogs.Items.Add("Moved " + modelName + " from: " + ymap.Name + ".");
+                                listBoxLogs.Items.Add("Replaced " + modelName + " by " + entityData.newModel + " in " + ymap.Name + ".");
                                 if (!modificationsMade) modificationsMade = true;
                                 break;
                             }
@@ -227,7 +230,7 @@ namespace YMapReplace
                     if (modificationsMade)
                     {
                         byte[] newBytes = ymap.Save();
-                        //File.WriteAllBytes(filePath, newBytes);
+                        File.WriteAllBytes(filePath, newBytes);
                     }
                     progressBar1.PerformStep();
                 }
