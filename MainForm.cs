@@ -227,7 +227,7 @@ namespace YMapReplace
                     if (modificationsMade)
                     {
                         byte[] newBytes = ymap.Save();
-                        //File.WriteAllBytes(filePath, newBytes);
+                        File.WriteAllBytes(filePath, newBytes);
                     }
                     progressBar1.PerformStep();
                 }
