@@ -63,6 +63,18 @@ namespace YMapReplace
                 listBoxFiles.Items.Add(model + " will be replaced by " + replaceModel + ". XYZ: " + posX + " " + posY + " " + posZ + " | Rotation: " + rotX + " " + rotY + " " + rotZ);
                 replaceList.Add(new ReplaceEntity(model, replaceModel, posX, posY, posZ, rotX, rotY, rotZ));
             }
+
+            deleteCheckbox.Checked = false;
+            replaceModelTextBox.Text = "";
+            modelTextBox.Text = "";
+
+            numericRotX.Value = 0;
+            numericRotY.Value = 0;
+            numericRotZ.Value = 0;
+
+            numericX.Value = 0;
+            numericY.Value = 0;
+            numericZ.Value = 0;
         }
 
         private void delButton_Click(object sender, EventArgs e)
