@@ -150,15 +150,18 @@ namespace YMapReplace
         {
             if (listBoxFiles.Items.Count == 0) return;
 
-            string pathToYmap = pathYmapTextBox.Text;
-            if (string.IsNullOrEmpty(pathToYmap))
+            if (listBoxPath.Items.Count == 0)
             {
                 MessageBox.Show("The path is not valid.");
                 return;
             }
 
             fileList = new List<string>();
-            DirSearch(pathToYmap);
+
+            foreach (string path in listBoxPath.Items)
+            {
+                DirSearch(path);
+            }
 
             int fileCount = fileList.Count;
             if (fileCount <= 0)
@@ -177,6 +180,7 @@ namespace YMapReplace
                 Thread.CurrentThread.IsBackground = true;
                 foreach (string filePath in fileList)
                 {
+                    Console.WriteLine(filePath);
                     bool modificationsMade = false;
 
                     YmapFile ymap = new YmapFile();
@@ -222,7 +226,7 @@ namespace YMapReplace
                     if (modificationsMade)
                     {
                         byte[] newBytes = ymap.Save();
-                        File.WriteAllBytes(filePath, newBytes);
+                        //File.WriteAllBytes(filePath, newBytes);
                     }
                     progressBar1.PerformStep();
                 }
@@ -240,6 +244,32 @@ namespace YMapReplace
             {
                 pathYmapTextBox.Text = fbd.SelectedPath;
             }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            listBoxPath.Items.Add(pathYmapTextBox.Text);
+            pathYmapTextBox.Text = "";
+        }
+
+        int index = 0;
+        public void listBoxPath_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                index = listBoxPath.IndexFromPoint(e.Location);
+                {
+                    if (index == listBoxPath.SelectedIndex)
+                    {
+                        contextMenuStrip1.Show(Cursor.Position);
+                    }
+                }
+            }
+        }
+
+        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBoxPath.Items.RemoveAt(index);
         }
     }
 }

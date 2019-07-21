@@ -30,12 +30,11 @@ namespace YMapReplace
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.numericZ = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.replaceButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
-            this.pathYmapTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numericX = new System.Windows.Forms.NumericUpDown();
             this.numericY = new System.Windows.Forms.NumericUpDown();
@@ -53,12 +52,18 @@ namespace YMapReplace
             this.delButton = new System.Windows.Forms.Button();
             this.listBoxFiles = new System.Windows.Forms.ListBox();
             this.listBoxLogs = new System.Windows.Forms.ListBox();
+            this.pathYmapTextBox = new System.Windows.Forms.TextBox();
+            this.listBoxPath = new System.Windows.Forms.ListBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRotZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRotY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRotX)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericZ
@@ -78,16 +83,6 @@ namespace YMapReplace
             this.numericZ.Name = "numericZ";
             this.numericZ.Size = new System.Drawing.Size(108, 20);
             this.numericZ.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(133, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 55);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "YMAP Replacer";
             // 
             // progressBar1
             // 
@@ -116,18 +111,10 @@ namespace YMapReplace
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // pathYmapTextBox
-            // 
-            this.pathYmapTextBox.Location = new System.Drawing.Point(15, 90);
-            this.pathYmapTextBox.Name = "pathYmapTextBox";
-            this.pathYmapTextBox.Size = new System.Drawing.Size(579, 20);
-            this.pathYmapTextBox.TabIndex = 5;
-            this.pathYmapTextBox.Click += new System.EventHandler(this.pathYmapTextBox_OnClick);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 74);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 6;
@@ -324,11 +311,54 @@ namespace YMapReplace
             this.listBoxLogs.Size = new System.Drawing.Size(579, 108);
             this.listBoxLogs.TabIndex = 23;
             // 
+            // pathYmapTextBox
+            // 
+            this.pathYmapTextBox.Location = new System.Drawing.Point(15, 25);
+            this.pathYmapTextBox.Name = "pathYmapTextBox";
+            this.pathYmapTextBox.Size = new System.Drawing.Size(551, 20);
+            this.pathYmapTextBox.TabIndex = 5;
+            this.pathYmapTextBox.Click += new System.EventHandler(this.pathYmapTextBox_OnClick);
+            // 
+            // listBoxPath
+            // 
+            this.listBoxPath.FormattingEnabled = true;
+            this.listBoxPath.Location = new System.Drawing.Point(15, 57);
+            this.listBoxPath.Name = "listBoxPath";
+            this.listBoxPath.Size = new System.Drawing.Size(579, 56);
+            this.listBoxPath.TabIndex = 24;
+            this.listBoxPath.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxPath_MouseDown);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(572, 23);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(22, 23);
+            this.buttonAdd.TabIndex = 25;
+            this.buttonAdd.Text = "+";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.supprimerToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // supprimerToolStripMenuItem
+            // 
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supprimerToolStripMenuItem.Text = "Supprimer";
+            this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
+            // 
             // YMapReplacerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 600);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.listBoxPath);
             this.Controls.Add(this.listBoxLogs);
             this.Controls.Add(this.listBoxFiles);
             this.Controls.Add(this.delButton);
@@ -351,7 +381,6 @@ namespace YMapReplace
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.replaceButton);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "YMapReplacerForm";
             this.Text = "YMAP Replacer";
@@ -361,18 +390,16 @@ namespace YMapReplace
             ((System.ComponentModel.ISupportInitialize)(this.numericRotZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRotY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRotX)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button replaceButton;
         private System.Windows.Forms.Button resetButton;
-        private System.Windows.Forms.TextBox pathYmapTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericX;
         private System.Windows.Forms.NumericUpDown numericY;
@@ -391,6 +418,11 @@ namespace YMapReplace
         private System.Windows.Forms.NumericUpDown numericZ;
         private ListBox listBoxFiles;
         private ListBox listBoxLogs;
+        private TextBox pathYmapTextBox;
+        private ListBox listBoxPath;
+        private Button buttonAdd;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem supprimerToolStripMenuItem;
     }
 }
 
