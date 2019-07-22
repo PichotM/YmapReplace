@@ -216,12 +216,12 @@ namespace YMapReplace
                                 entity._CEntityDef.archetypeName = new MetaHash(newHash);
                                 entity.SetPosition(entity.Position + new Vector3(0.0f + entityData.posX, 0.0f + entityData.posY, 0.0f + entityData.posZ));
 
-                                if (entityData.rotX != 0.0 && entityData.rotY != 0.0 && entityData.rotZ != 0.0)
+                                if (entityData.rotX != 0.0 || entityData.rotY != 0.0 || entityData.rotZ != 0.0)
                                 {
                                     Quaternion angle = AngleToQuaternion(entityData.rotX, entityData.rotY, entityData.rotZ);
                                     Quaternion newRot = Quaternion.Multiply(entity.Orientation, angle);
                                     newRot.Normalize();
-                                    entity.SetOrientation(Quaternion.Multiply(newRot, angle), true);
+                                    entity.SetOrientation(newRot);
                                 }
 
                                 listBoxLogs.Items.Add("Replaced " + modelName + " by " + entityData.newModel + " in " + ymap.Name + ".");
